@@ -2,6 +2,7 @@ function fetch(url) {
   return new Promise(function(resolve, reject) {
     const wait = Math.random() * 10;
     setTimeout(() => {
+      console.log("resolve" + url);
       resolve(url + Math.random() * 100);
     }, wait * 1000);
   })
@@ -15,10 +16,11 @@ function multiRequest(urls, maxNum) {
 
   return new Promise(function(resolve, reject) {
     const generatorReq = function(i) {
-      return fetch(urls[i]).then(function(value) {
+       fetch(urls[i]).then(function(value) {
         resList[i] = value; rescount++;
-        if (rescount >= urls.length) resolve(resList);
-
+        if (rescount >= urls.length) {
+          resolve(resList); return;
+        }
         if (index < urls.length) {
           generatorReq(index);
           index++;

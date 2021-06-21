@@ -7,13 +7,13 @@
  * 重复 n 次，就完成了 n 个数据的排序工作。
  */
 function bubbleSort(arr) {
-  const len = arr.lenght;
+  const len = arr.length;
   for(let i = 0; i < len; i++) {
-    for(let j = 0; j < len - i - 1; j++) {
+    for (let j = 0; j < len - j - 1; j++) {
       if (arr[j] < arr[j+1]) continue;
-      var temp = arr[j];
+      const temp = arr[j];
       arr[j] = arr[j+1];
-      arr[j+1] = temp; 
+      arr[j+1] = temp;
     }
   }
 }

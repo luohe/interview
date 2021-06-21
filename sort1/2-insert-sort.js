@@ -5,18 +5,20 @@
  */
 function insertSort(nums) {
   const len = nums.length;
+  if (len < 2) return nums;
 
-  for(let i = 0; i < len; i++) {
-    let value = nums[i];
+  for (let i = 1; i < len; i++) {
+    const curV = nums[i];
     let j = i - 1;
+  
     for (; j >= 0; j--) {
-      if (nums[j] > value) {
+      if (nums[j]> curV) {
         nums[j+1] = nums[j];
-      } else{
+      } else {
         break;
       }
     }
-    nums[j+1] = value;
+    nums[j+1] = curV;
   }
 }
 
