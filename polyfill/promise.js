@@ -140,7 +140,7 @@ function resolvePromise(promise2, x, resolve, reject) {
   }
 }
 
-Promise.prototype.catch = function() {
+Promise.prototype.catch = function(onReject) {
   return this.then(null, onReject);
 }
 
