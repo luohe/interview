@@ -4,8 +4,7 @@ function isObject(value) {
 
 
 function clone(target, map = new WeakMap) {
-  if (target === null || typeof target !== "object") return target;
-
+  if (!isObject(target)) return target;
   if (map.has(target)) return map.get(target);
 
   const cloneTarget = Array.isArray(target) ? [] : {};
