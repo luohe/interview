@@ -1,19 +1,19 @@
 Function.prototype.bind = Function.prototype.bind || function(context) {
   if (typeof this !== 'function') {
-    throw Error("only called by function");
+    throw Error("called by function");
   }
-  var self = this;
-  var params = Array.prototype.slice.call(arguments, 1);
-  
+
+  const self = this;
+  const params = Array.prototype.slice.call(arguments, 1);
   const FNOP = function() {};
 
-  const f = function() {
-    const sParams = Array.prototype.slice.call(arguments, 0);
-    return self.apply(this instanceof FNOP ? this : context, sParams.concat(params));
+  const FBound = function() {
+    const _params = Array.prototype.slice.call(arguments);
+    return self.apply(this instanceof FNOP ? this : context, params.concat(_params));
   }
 
-  // 防止被绑定函数的prototype被修改
-  FNOP.prototype = self.prototype;
-  f.prototype = new FNOP();
-  return f;
+  FNOP.ptototype = self.prototype;
+  FBound.prototype = new FNOP();
+  return FBound;
 }
+
