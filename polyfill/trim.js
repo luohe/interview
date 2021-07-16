@@ -4,5 +4,5 @@ String.prototype.trim = function() {
   ws = /\s/,
   i = str.length;
   while(ws.test(str.charAt(--i)));
-  return str.slice(0, i + 1);
+  return str.slice(0, ++i);
 }

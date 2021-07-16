@@ -1,11 +1,14 @@
 Array.prototype.flat = function(depth = 1) {
-  const flatArr = [].concat(this);
+  var res = [].concat(this);
   while(depth--) {
-    const len = flatArr.length;
-    for(let i = len; i > 0; i--) {
-      if (!Array.isArray(flatArr[i])) continue;
-      flatArr.splice(i, 1, ...flatArr[i]);
+    for(var i = res.length - 1; i >= 0; i--) {
+      if (!Array.isArray(res[i])) continue;
+      res[i].splice(i, 1, ...res[i]);
     }
   }
-  return flatArr;
+  return res;
 }
+
+
+
+

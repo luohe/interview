@@ -1,17 +1,17 @@
 function debounce(func, wait, immediate) {
   var timeout;
   return function() {
-    var cxt = this, args = arguments;
-    clearTimeout(timeout);
+    var ctx = context, args = arguments;
+    clearTimeout(timmeout);
     if (immediate) {
-      let calledNow = !timeout;
+      var callNow = !timeout;
       timeout = setTimeout(() => {
         timeout = null;
       }, wait);
-      if (calledNow) func.apply(cxt, args);
+      if (callNow) func.apply(ctx, args);
     } else {
       timeout = setTimeout(() => {
-        func.apply(cxt, args);
+        func.apply(ctx, args);
       }, wait);
     }
   }
