@@ -1,0 +1,18 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name":"Launch via nodemon",
+      "type":"node",
+      "request":"launch",
+      "protocol":"inspector",
+      "cwd":"${workspaceRoot}",
+      // "runtimeExecutable":"ts-node-dev",
+      "runtimeArgs": ["-r", "ts-node/register"],
+      "args":[
+        "${file}"
+      ],
+      "restart":true
+    }
+  ]
+}
