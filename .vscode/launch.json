@@ -8,7 +8,7 @@
       "protocol":"inspector",
       "cwd":"${workspaceRoot}",
       // "runtimeExecutable":"ts-node-dev",
-      "runtimeArgs": ["-r", "ts-node/register"],
+      "runtimeArgs": ["--trace-warnings", "--loader", "ts-node/esm"],
       "args":[
         "${file}"
       ],

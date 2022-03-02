@@ -1,4 +1,4 @@
-import { observable } from './01-subject'
+import { observable } from './01-subject.js'
 
 console.log(1111)
 const data = observable({ age: 10, name: 'Zchary' })
