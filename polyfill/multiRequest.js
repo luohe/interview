@@ -1,34 +1,30 @@
-function fetch(url) {
-  return new Promise(function(resolve, reject) {
-    const wait = Math.random() * 10;
-    setTimeout(() => {
-      console.log("resolve" + url);
-      resolve(url + Math.random() * 100);
-    }, wait * 1000);
-  })
-}
+const fetch = (id) => new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve(id + "的值");
+  }, Math.Random() * 1000);
+})
 
 // 1. 批量请求函数，最大并发数maxNum。
 // 2. 每当有一个请求返回，就留下一个空位，可以增加新的请求。
 // 2. 所有请求完成后，结果按照urls里面的顺序依次打出。
 function multiRequest(urls, maxNum) {
-  var index = 0, resList = [], rescount = 0;
+  var resList = [], index = 0, rescount;
 
   return new Promise(function(resolve, reject) {
     const generatorReq = function(i) {
-       fetch(urls[i]).then(function(value) {
+      fetch(urls[i]).then(function(value) {
         resList[i] = value; rescount++;
         if (rescount >= urls.length) {
           resolve(resList); return;
         }
-        if (index < urls.length) {
+        if (index<urls.length) {
           generatorReq(index);
           index++;
         }
-      });
+      })
     }
 
-    for (; index < maxNum; index++) {
+    for(;index < maxNum; index++) {
       if (index >= urls.length) break;
       generatorReq(index);
     }
