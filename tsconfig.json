@@ -11,7 +11,7 @@
      "files": true,
  
      "compilerOptions": {
-      "module": "ESNext",
+      // "module": "ESNext",
       "lib": ["es2019", "es2020.promise", "es2020.bigint", "es2020.string", "dom"],
        // compilerOptions specified here will override those declared below,
        // but *only* in ts-node.  Useful if you want ts-node and tsc to use
@@ -20,7 +20,6 @@
    },
    "compilerOptions": {
      // typescript options here
-     "module": "ESNext",
      "lib": ["es2019", "es2020.promise", "es2020.bigint", "es2020.string", "dom"],
    }
 }
