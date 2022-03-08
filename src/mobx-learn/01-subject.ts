@@ -1,5 +1,5 @@
 // 观察：实现observable
-export function observable(target) {
+export function observable(target: any) {
   const _target = {...target}
   let proxy = {};
 
