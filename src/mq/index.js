@@ -28,15 +28,16 @@ MessageTrigger.prototype.off = function(key) {
 // 注册消息时间
 MessageTrigger.prototype.start = function(key) {
     if (this.messages.has(key)) this.messages.delete(key)
-    this.messages.set(key, (new Date).valueOf())
-
     // 定时器清除
-    setTimeout(() => this.off(key), this.maxInterval)
+    const timeoutKey = setTimeout(() => this.off(key), this.maxInterval)
+
+    this.messages.set(key, { timeoutKey, time: (new Date).valueOf() })
 }
 
 MessageTrigger.prototype.end = function(key) {
-    const time = this.messages.get(key)
+    const { timeoutKey, time } = this.messages.get(key)
     if (time) {
+        clearTimeout(timeoutKey)
         this.messages.delete(key)
         this.execute(key, (new Date).valueOf() - time)
     }

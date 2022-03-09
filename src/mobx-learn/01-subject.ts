@@ -1,3 +1,5 @@
+import { watcher } from "./index"
+
 // 观察：实现observable
 export function observable(target: any) {
   const _target = {...target}
