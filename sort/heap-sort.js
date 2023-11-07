@@ -3,11 +3,11 @@
 // 堆中每一个节点的值都必须大于等于（或小于等于）其子树中每个节点的值
 
 // 插入一个元素， 自下向上堆化
-// 删除堆顶元素，交换最后一个元素到堆顶， 然后自上向下堆化
 function buildMaxHeap(data) {
   var len = data.length;
-  for (let i = (len >> 1) - 1; i >= 0; i--) {
-    heapify(a, len, i);
+  // todo: 为什么叶子结点数
+  for (let i = (len / 2) - 1; i >= 0; i--) {
+    heapify(data, len, i);
   }
 }
 
@@ -15,8 +15,8 @@ function heapify(data, n, i) {
   while(true) {
     let L = 2*i+1, R = 2*i+2;
     var maxPos = i;
-    if (L <= n && a[maxPos] < a[L]) maxPos = L;
-    if (R<=n && a[maxPos] <a[R]) maxPos = R;
+    if (L <= n && data[maxPos] < data[L]) maxPos = L;
+    if (R<=n && data[maxPos] <data[R]) maxPos = R;
     if (maxPos == i) break;
     swap(data, i, maxPos);
     i = maxPos;
@@ -35,6 +35,8 @@ function heapSort(arr) {
   const len = arr.length;
   buildMaxHeap(arr);
   let k = len - 1;
+
+  // 删除堆顶元素，交换最后一个元素到堆顶， 然后自上向下堆化
   while(k>0) {
     swap(arr, 0, k);
     --k;
