@@ -77,7 +77,27 @@ class LinkedList {
     return curNode.value;
   }
 
-  removeAt(index) {}
+  removeAt(index) {
+    if (index < 0 || index >= this.length) {
+      throw new Error('index out of range')
+    }
+    let sentinelNode = new Node(null)
+    sentinelNode.next = this.head;
+
+    let prevNode = sentinelNode;
+    let curIdx = 0;
+    while (curIdx <= index) {
+      if (curIdx === index) break;
+      prevNode = prevNode.next;
+      curIdx++;
+    }
+
+    prevNode.next = prevNode.next.next;
+    this.head = sentinelNode.next;
+     // preNode -> Node -> null => preNode -> null
+    // preNode -> Node -> Node -> null => preNode -> Node -> null
+    if (!prevNode.next) this.tail = prevNode.next
+  }
 
   toArray() {
     let arr = []
