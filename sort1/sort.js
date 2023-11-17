@@ -120,7 +120,9 @@ function quickSort(arr) {
 // 调整：从上到下，从左到右。调整大顶堆
 function buildMaxHeap(nums) {
   const len = nums.length;
-  for (let i = len / 2 - 1; i > 0; i--) {
+  // error: len / 2 - 1 => Math.floor(len / 2) - 1;
+  // error: i > 0 => i >= 0
+  for (let i = Math.floor(len / 2) - 1; i >= 0; i--) {
     heapify(nums, len, i)
   }
 }
@@ -155,13 +157,10 @@ function heapSort(nums) {
   }
 }
 
-heapSort(array)
-console.log(array)
-
+const a = [7,4,9,2,20,1,6];
+heapSort(a)
+console.log(a)
 // 桶排序
-
-// 基数排序
+function bucketSort(nums, bucketSize) {}
 
 // 计数排序
-
-// 希尔排序

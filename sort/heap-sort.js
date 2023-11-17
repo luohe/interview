@@ -6,7 +6,7 @@
 function buildMaxHeap(data) {
   var len = data.length;
   // todo: 为什么叶子结点数
-  for (let i = (len / 2) - 1; i >= 0; i--) {
+  for (let i = Math.floor(len / 2) - 1; i >= 0; i--) {
     heapify(data, len, i);
   }
 }
@@ -46,3 +46,4 @@ function heapSort(arr) {
 
 const a = [7,4,9,2,20,1,6];
 heapSort(a);
+console.log(a)
