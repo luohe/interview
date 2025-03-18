@@ -20,6 +20,8 @@
   },
   "homepage": "https://github.com/luohe/interview#readme",
   "dependencies": {
+    "@babel/runtime": "^7.19.0",
+    "mobx": "^6.6.2",
     "ts-node": "^10.6.0",
     "ts-node-dev": "^1.1.8",
     "typescript": "^4.6.2"
