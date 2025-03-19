@@ -5,12 +5,30 @@
  */
 
 // @lc code=start
+<<<<<<< Updated upstream
+=======
+const set_intersection = (set1, set2) => {
+  if (set1.size > set2.size) {
+    return set_intersection(set2, set1);
+  }
+
+  const intersection = new Set();
+  for (const num of set1) {
+    if (set2.has(num)) {
+      intersection.add(num)
+    }
+  }
+  return [...intersection];
+}
+
+>>>>>>> Stashed changes
 /**
  * @param {number[]} nums1
  * @param {number[]} nums2
  * @return {number[]}
  */
 var intersection = function(nums1, nums2) {
+<<<<<<< Updated upstream
   // 排序后，利用双指针查看值是否一样
   nums1.sort((a,b) => a - b)
   nums2.sort((a,b) => a - b)
@@ -36,6 +54,11 @@ var intersection = function(nums1, nums2) {
   }
 
   return intersection;
+=======
+    const set1 = new Set(nums1);
+    const set2 = new Set(nums2);
+    return set_intersection(set1, set2);
+>>>>>>> Stashed changes
 };
 // @lc code=end
 
