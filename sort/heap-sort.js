@@ -2,7 +2,7 @@
 // 堆是一个完全二叉树
 // 堆中每一个节点的值都必须大于等于（或小于等于）其子树中每个节点的值
 
-// 插入一个元素， 自下向上堆化
+// 插入一个元素
 function buildMaxHeap(data) {
   var len = data.length;
   // todo: 为什么叶子结点数
@@ -11,12 +11,13 @@ function buildMaxHeap(data) {
   }
 }
 
-function heapify(data, n, i) {
+// 自上往下堆化
+function heapify(data, len, i) {
   while(true) {
     let L = 2*i+1, R = 2*i+2;
     var maxPos = i;
-    if (L <= n && data[maxPos] < data[L]) maxPos = L;
-    if (R<=n && data[maxPos] <data[R]) maxPos = R;
+    if (L <= len && data[maxPos] < data[L]) maxPos = L;
+    if (R<=len && data[maxPos] <data[R]) maxPos = R;
     if (maxPos == i) break;
     swap(data, i, maxPos);
     i = maxPos;
